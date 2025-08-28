@@ -36,7 +36,8 @@ Steps to Run The Code(python3 should be installed on the system)
 <img width="1277" height="764" alt="Screenshot 2025-08-28 at 11 11 47 AM" src="https://github.com/user-attachments/assets/743315ca-2eae-4df0-b1c3-a884ffca397a" />
 
 9. When you click on Buy-digital-gold, it will redirect to new page to buy digital gold-
-    <img width="1398" height="713" alt="Screenshot 2025-08-28 at 11 15 12 AM" src="https://github.com/user-attachments/assets/26bff43b-14bc-4cf3-ad76-d6d81d9510fc" />
+    <img width="1367" height="683" alt="Screenshot 2025-08-28 at 12 39 31 PM" src="https://github.com/user-attachments/assets/22408e30-6b22-4e4a-a679-f34a9a5c9cfe" />
+
 
 # Future Updates-
 
