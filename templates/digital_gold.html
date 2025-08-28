@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Simplified</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .welcome-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .price-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: slideInLeft 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .price-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .price-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .price-unit {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .investment-section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .amount-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .amount-input:focus {
+            outline: none;
+            border-color: #FFD700;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .conversion-display {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .conversion-text {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .gold-amount {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 165, 0, 0.4);
+        }
+
+        .buy-button:active {
+            transform: translateY(-1px);
+        }
+
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .buy-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: #FFD700;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            }
+            to {
+                text-shadow: 2px 2px 20px rgba(255, 215, 0, 0.5);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(-60px) rotate(240deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .welcome-title {
+                font-size: 2.5em;
+            }
+            
+            .price-display {
+                font-size: 2.5em;
+            }
+        }
+
+        .status-message {
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="welcome-title">Welcome to Gold Simplified</h1>
+            <p class="subtitle">Your gateway to smart gold investments</p>
+        </header>
+
+        <main class="main-content">
+            <section class="price-section">
+                <h2 class="price-title">Current Gold Price</h2>
+                <div class="price-display" id="goldPrice">Rs 95000</div>
+                <div class="price-unit">per kg (Rupees)</div>
+            </section>
+
+            <section class="investment-section">
+                <div class="form-group">
+                    <label for="investAmount" class="form-label">Investment Amount (Rs)</label>
+                    <input 
+                        type="number" 
+                        id="investAmount" 
+                        class="amount-input" 
+                        placeholder="Enter amount to invest..."
+                        min="0"
+                        step="0.01"
+                    >
+                </div>
+
+                <div class="conversion-display">
+                    <div class="conversion-text">Gold Amount</div>
+                    <div class="gold-amount" id="goldAmount">0.000 kg</div>
+                </div>
+
+                <button class="buy-button" id="buyButton">
+                    🏆 Buy Gold Now
+                </button>
+
+                <div class="status-message" id="statusMessage"></div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Gold price simulation and conversion logic
+        const goldPriceElement = document.getElementById('goldPrice');
+        const investAmountInput = document.getElementById('investAmount');
+        const goldAmountElement = document.getElementById('goldAmount');
+        const buyButton = document.getElementById('buyButton');
+        const statusMessage = document.getElementById('statusMessage');
+
+        let currentGoldPrice = 95000;
+
+        // Update gold price with realistic fluctuation
+        function updateGoldPrice() {
+            const fluctuation = (Math.random() - 0.5) * 10;
+            currentGoldPrice = Math.max(2000, currentGoldPrice + fluctuation);
+            goldPriceElement.textContent = `$${currentGoldPrice.toFixed(2)}`;
+        }
+
+        // Calculate gold amount based on investment
+        function calculateGoldAmount() {
+            const investAmount = parseFloat(investAmountInput.value) || 0;
+            const goldOunces = investAmount / currentGoldPrice;
+            goldAmountElement.textContent = `${goldOunces.toFixed(6)} kg`;
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type} show`;
+            
+            setTimeout(() => {
+                statusMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        // Handle buy button click
+        async function handlePurchase() {
+            const investAmount = parseFloat(investAmountInput.value);
+            
+            if (!investAmount || investAmount <= 0) {
+                showStatus('Please enter a valid investment amount', 'error');
+                return;
+            }
+
+            if (investAmount < 100) {
+                showStatus('Minimum investment amount is Rs100', 'error');
+                return;
+            }
+
+            // Disable button and show loading state
+            buyButton.disabled = true;
+            buyButton.innerHTML = '⏳ Processing...';
+
+            try {
+                // Simulate API call to backend
+                const response = await fetch('/api/buy-gold', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: investAmount,
+                        goldPrice: currentGoldPrice,
+                        goldOunces: investAmount / currentGoldPrice,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                if (response.ok) {
+                    showStatus(`Successfully invested $${investAmount.toFixed(2)} in gold!`, 'success');
+                    investAmountInput.value = '';
+                    calculateGoldAmount();
+                } else {
+                    throw new Error('Purchase failed');
+                }
+            } catch (error) {
+                showStatus('Purchase failed. Please try again later.', 'error');
+                console.error('Purchase error:', error);
+            } finally {
+                // Re-enable button
+                buyButton.disabled = false;
+                buyButton.innerHTML = '🏆 Buy Gold Now';
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.floating-particles');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Event listeners
+        investAmountInput.addEventListener('input', calculateGoldAmount);
+        buyButton.addEventListener('click', handlePurchase);
+
+        // Initialize
+        updateGoldPrice();
+        createParticles();
+        
+        // Update gold price every 30 seconds
+        setInterval(updateGoldPrice, 30000);
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.price-section, .investment-section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
