@@ -380,7 +380,7 @@
         function updateGoldPrice() {
             const fluctuation = (Math.random() - 0.5) * 10;
             currentGoldPrice = Math.max(2000, currentGoldPrice + fluctuation);
-            goldPriceElement.textContent = `$${currentGoldPrice.toFixed(2)}`;
+            goldPriceElement.textContent = `Rs ${currentGoldPrice.toFixed(2)}`;
         }
 
         // Calculate gold amount based on investment

@@ -3,7 +3,7 @@
 This repository depends on Google Gemini API to provide intelligent output. You need to add API key in helper_functions.py file. The program will run even if the key is not provided but the output will be generic
 
 
-Steps to Run The Code
+Steps to Run The Code(python3 should be installed on the system)
 
 1. Create Virtual Environment
     - python3 -m venv .venv
