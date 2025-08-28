@@ -61,6 +61,7 @@ Steps to Run The Code(python3 should be installed on the system)
 4. updating current price of gold using API call to yahoo finance.
 5. streaming of voice output to reduce the wait time for voice input.
 6. Saving the voice_input in backend so that it can be streamed later.
+7. Adding open source model support to use when gemini API key is not available.
 
 
 
