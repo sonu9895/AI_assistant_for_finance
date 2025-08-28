@@ -29,19 +29,19 @@ Steps to Run The Code(python3 should be installed on the system)
 
 
 7. After entering the name it will redirect to below main page-
-<img width="1452" height="784" alt="chat_start_page" src="https://github.com/user-attachments/assets/849d8252-8a24-4aed-a579-4fa175d14d07" />
+    <img width="1452" height="784" alt="chat_start_page" src="https://github.com/user-attachments/assets/849d8252-8a24-4aed-a579-4fa175d14d07" />
 
 
 
 8. You can chat with the assistant or send voice message to get responses 
-<img width="954" height="748" alt="Screenshot 2025-08-28 at 11 11 27 AM" src="https://github.com/user-attachments/assets/e1b3559b-79e5-49eb-936d-a8127e29cd6e" />
-<img width="1296" height="711" alt="Screenshot 2025-08-28 at 11 13 56 AM" src="https://github.com/user-attachments/assets/ba064479-48c2-43df-bd6e-7b54c70138dd" />
+    <img width="954" height="748" alt="Screenshot 2025-08-28 at 11 11 27 AM" src="https://github.com/user-attachments/assets/e1b3559b-79e5-49eb-936d-a8127e29cd6e" />
+    <img width="1296" height="711" alt="Screenshot 2025-08-28 at 11 13 56 AM" src="https://github.com/user-attachments/assets/ba064479-48c2-43df-bd6e-7b54c70138dd" />
 
 
 
 
 9. If your message or voice contains gold keyword, it will provides nudge and button to buy digital gold
-<img width="1277" height="764" alt="Screenshot 2025-08-28 at 11 11 47 AM" src="https://github.com/user-attachments/assets/743315ca-2eae-4df0-b1c3-a884ffca397a" />
+    <img width="1277" height="764" alt="Screenshot 2025-08-28 at 11 11 47 AM" src="https://github.com/user-attachments/assets/743315ca-2eae-4df0-b1c3-a884ffca397a" />
 
 
 
