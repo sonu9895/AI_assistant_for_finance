@@ -53,7 +53,7 @@ Steps to Run The Code(python3 should be installed on the system)
 
 # Future Updates-
 
-1. Multiple user can chat at same time. Tracking the user using userid and saving the chat history in SQL database.
+1. Multiple user can chat at same time. Tracking the user using userid and saving the chat history in S3.
    
 2. Redis caching for providing fast answers to repeated question.
    
